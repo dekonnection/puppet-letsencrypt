@@ -24,9 +24,15 @@ class letsencrypt::plugin::dns_gandi (
     }
   }
 
-  $ini_vars = {
-    "certbot_plugin_gandi:dns_api_key"    => $api_key,
-    "certbot_plugin_gandi:dns_sharing_id" => $sharing_id,
+  if $sharing_id {
+    $ini_vars = {
+      "certbot_plugin_gandi:dns_api_key"    => $api_key,
+      "certbot_plugin_gandi:dns_sharing_id" => $sharing_id,
+    }
+  } else {
+    $ini_vars = {
+      "certbot_plugin_gandi:dns_api_key"    => $api_key,
+    }
   }
 
 

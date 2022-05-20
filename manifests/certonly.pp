@@ -203,8 +203,9 @@ define letsencrypt::certonly (
       require letsencrypt::plugin::dns_gandi
       $_domains = join($domains, '\' -d \'')
       $plugin_args  = [
+        "-a certbot-plugin-gandi:dns",
         "--cert-name '${cert_name}' -d '${_domains}'",
-        "--dns-gandi-credentials ${letsencrypt::plugin::dns_rfc2136::config_dir}/dns-gandi.ini",
+        "--certbot-plugin-gandi:dns-credentials ${letsencrypt::plugin::dns_rfc2136::config_dir}/dns-gandi.ini",
       ]
     }
 

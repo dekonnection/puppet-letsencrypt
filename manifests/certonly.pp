@@ -199,6 +199,15 @@ define letsencrypt::certonly (
       ]
     }
 
+    'dns-gandi': {
+      require letsencrypt::plugin::dns_gandi
+      $_domains = join($domains, '\' -d \'')
+      $plugin_args  = [
+        "--cert-name '${cert_name}' -d '${_domains}'",
+        "--dns-gandi-credentials ${letsencrypt::plugin::dns_rfc2136::config_dir}/dns-gandi.ini",
+      ]
+    }
+
     'nginx': {
       require letsencrypt::plugin::nginx
 

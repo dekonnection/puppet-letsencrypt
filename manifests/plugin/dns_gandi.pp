@@ -4,7 +4,7 @@ class letsencrypt::plugin::dns_gandi (
   Optional[String[1]] $package_name = undef,
   Optional[String[1]] $api_key      = undef,
   Optional[String[1]] $sharing_id   = undef,
-  Stdlib::Absolutepath $config_path = "${letsencrypt::config_dir}/gandi.ini",
+  Stdlib::Absolutepath $config_path = "${letsencrypt::config_dir}/dns-gandi.ini",
   Boolean $manage_package           = true,
   Integer $propagation_seconds      = 10,
 ) {
